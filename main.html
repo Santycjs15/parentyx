@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PARENTYX - Ruta de crianza saludable</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins', sans-serif;
+      background:#0B1F3A;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    /* =========================
+       HEADER
+    ==========================*/
+
+    header{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      background:rgba(5,15,30,0.92);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .navbar{
+      width:90%;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:5px 0;
+    }
+
+    .logo img{
+      height: 125px;
+      width:auto;
+      display:block;
+      object-fit:contain;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+    }
+
+    nav ul{
+      display:flex;
+      list-style:none;
+      gap:40px;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      font-weight:500;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:#74B3FF;
+    }
+
+    /* =========================
+       HERO SECTION
+    ==========================*/
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:120px 8% 80px;
+      gap:60px;
+    }
+
+    .hero-content{
+      flex:1;
+    }
+
+    .hero-content h2{
+      font-size:4rem;
+      line-height:1.1;
+      margin-bottom:20px;
+    }
+
+    .hero-content span{
+      color:#74B3FF;
+    }
+
+    .hero-content p{
+      color:#D7E2F1;
+      font-size:1.1rem;
+      line-height:1.8;
+      max-width:650px;
+      margin-bottom:35px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:16px 30px;
+      border:none;
+      border-radius:12px;
+      font-size:1rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+      text-decoration:none;
+      display:inline-block;
+    }
+
+    .btn-primary{
+      background:#5B8DEF;
+      color:white;
+    }
+
+    .btn-primary:hover{
+      background:#79A4FF;
+      transform:translateY(-2px);
+    }
+
+    .btn-secondary{
+      border:2px solid #5B8DEF;
+      color:white;
+      background:transparent;
+    }
+
+    .btn-secondary:hover{
+      background:#5B8DEF;
+    }
+
+    .hero-image{
+      flex:1;
+      display:flex;
+      justify-content:center;
+    }
+
+    .hero-image img{
+      width:550px; 
+      max-width:550px;
+      border-radius:30px;
+      object-fit:fill;
+      box-shadow:0 20px 60px rgba(0,0,0,0.45);
+    }
+
+    /* =========================
+       ABOUT SECTION
+    ==========================*/
+
+    .section{
+      width:90%;
+      margin:auto;
+      padding:100px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:70px;
+    }
+
+    .section-title h3{
+      font-size:2.7rem;
+      margin-bottom:15px;
+    }
+
+    .section-title p{
+      color:#B9C8E3;
+      max-width:800px;
+      margin:auto;
+      line-height:1.8;
+    }
+
+    /* =========================
+       CARDS
+    ==========================*/
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:#132A4A;
+      padding:35px;
+      border-radius:24px;
+      transition:0.3s;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+      background:#17355F;
+    }
+
+    .card h4{
+      font-size:1.4rem;
+      margin-bottom:20px;
+      color:#74B3FF;
+    }
+
+    .card p{
+      color:#D7E2F1;
+      line-height:1.8;
+    }
+
+    /* =========================
+       IMAGE LINKS SECTION
+    ==========================*/
+
+    .image-links{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:40px;
+      margin-top:40px;
+    }
+
+    .image-box{
+      position:relative;
+      overflow:hidden;
+      border-radius:25px;
+      cursor:pointer;
+      height:500px; 
+      transition:0.4s;
+    }
+
+    .image-box img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:0.4s;
+    }
+
+    .image-box:hover img{
+      transform:scale(1.08);
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.45);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .overlay h4{
+      font-size:1.8rem;
+      color:white;
+    }
+
+    /* =========================
+       FOOTER
+    ==========================*/
+
+    footer{
+      margin-top:80px;
+      background:#081526;
+      padding:40px 20px;
+      text-align:center;
+      color:#B9C8E3;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ==========================*/
+
+    @media(max-width:950px){
+
+      .hero{
+        flex-direction:column;
+        text-align:center;
+      }
+
+      .hero-content h2{
+        font-size:3rem;
+      }
+
+      nav ul{
+        gap:20px;
+      }
+
+    }
+
+    @media(max-width:700px){
+
+      .navbar{
+        flex-direction:column;
+        gap:20px;
+      }
+
+      nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero-content h2{
+        font-size:2.4rem;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- =========================
+       HEADER
+  ==========================-->
+
+  <header>
+
+    <div class="navbar">
+
+      <div class="logo">
+        <img src="./promis.png" alt="PARENTYX - Ruta de crianza saludable">
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#vision">Visión</a></li>
+          <li><a href="#objetivos">Objetivos</a></li>
+          <li><a href="#sobre">Sobre Nosotros</a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+  </header>
+
+  <!-- =========================
+       HERO
+  ==========================-->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h2>
+        Ruta de  <span>crianza saludable</span>
+        desde la infancia
+      </h2>
+
+      <p>
+        PARENTYX es una plataforma psicoeducativa enfocada en la prevención de trastornos emocionales y conductuales en la infancia mediante la promoción de estilos de crianza saludables, fortalecimiento familiar y acompañamiento emocional.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#objetivos" class="btn btn-primary">Conocer más</a>
+        <a href="#sobre" class="btn btn-secondary">Sobre nosotros</a>
+      </div>
+
+    </div>
+
+    <div class="hero-image">
+      <img src="./page-imagesFriendsParents_Header_890_-b188ae2c-.original.jpg" alt="Psicología infantil">
+    </div>
+
+  </section>
+
+  <!-- =========================
+       VISION
+  ==========================-->
+
+  <section class="section" id="vision">
+
+    <div class="section-title">
+      <h3>Visión</h3>
+      <p>
+        Convertir la tecnología en una herramienta protectora para el desarrollo socioemocional infantil, promoviendo entornos familiares saludables y fortaleciendo las competencias parentales mediante recursos digitales accesibles y basados en evidencia.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- =========================
+       OBJETIVOS
+  ==========================-->
+
+  <section class="section" id="objetivos">
+
+    <div class="section-title">
+      <h3>Objetivos</h3>
+      <p>
+        La plataforma busca acompañar a padres, madres y cuidadores mediante contenidos educativos y herramientas prácticas orientadas al bienestar emocional infantil.
+      </p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <h4>Prevención y Promoción</h4>
+        <p>
+          Identificar señales de alerta y promover soluciones hacia los factores de riesgo relacionados con trastornos emocionales y conductuales en la infancia.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>Regulación emocional</h4>
+        <p>
+          Enseñar habilidades de identificación emocional, control de impulsos y resolución pacífica de conflictos.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>Estilos Parentales</h4>
+        <p>
+          Enseñar habilidades de identificación emocional, control de impulsos y resolución pacífica de conflictos.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>Crianza saludable</h4>
+        <p>
+          Promover prácticas de crianza positivas mediante ejemplos cotidianos y recursos prácticos para las familias.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       SOBRE NOSOTROS
+  ==========================-->
+
+  <section class="section" id="sobre">
+
+    <div class="section-title">
+      <h3>Sobre Nosotros</h3>
+
+      <p>
+        PARENTYX “Ruta de crianza saludable” es una estrategia innovadora enfocada en la prevención y promoción de la salud mental infantil mediante el uso responsable de herramientas digitales, recursos psicoeducativos y contenidos diseñados para fortalecer los vínculos familiares.
+      </p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <h4>Videos para padres</h4>
+        <p>
+          Contenidos sobre factores de riesgo, desarrollo biopsicosocial, regulación emocional y prácticas de crianza saludable.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>Videos para niños</h4>
+        <p>
+          Recursos dinámicos enfocados en identificación emocional, límites, disciplina positiva y resolución de conflictos.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>Enfoque psicoeducativo</h4>
+        <p>
+          Materiales diseñados bajo criterios de bajo impacto sensorial, aprendizaje significativo y acompañamiento familiar.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       IMAGE LINKS
+  ==========================-->
+
+  <section class="section">
+
+    <div class="section-title">
+      <h3>Explora nuestras secciones</h3>
+      <p>
+        Accede a recursos interactivos y contenidos educativos diseñados para padres, cuidadores y niños.
+      </p>
+    </div>
+
+    <div class="image-links">
+
+      <!-- Imagen 1 -->
+      <a href="https://youtu.be/tkWi3uNkqdw?si=SGnlxycxgQXeUhqY" target="_blank">
+
+        <div class="image-box">
+
+          <img src="./cartilla1.png" alt="Padres">
+
+          <div class="overlay">
+            <h4>Recursos para padres</h4>
+          </div>
+
+        </div>
+
+      </a>
+
+      <!-- Imagen 2 -->
+      <a href="https://www.youtube.com/watch?v=qBZSlGo4N1k" target="_blank">
+
+        <div class="image-box">
+
+          <img src="./learning-baby-preschool-narrow.jpg" alt="Niños">
+
+          <div class="overlay">
+            <h4>Recursos para niños</h4>
+          </div>
+
+        </div>
+
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       FOOTER
+  ==========================-->
+
+  <footer>
+
+    <p>
+      © 2026 PARENTYX - Ruta de crianza saludable
+    </p>
+
+  </footer>
+
+</body>
+</html>
