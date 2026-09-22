@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PARENTYX - Ruta de crianza saludable">
+    <title>PARENTYX - Ruta de crianza saludable</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <header class="site-header">
+        <div class="navbar">
+            <a href="#" class="brand" aria-label="PARENTYX - Inicio">
+                <img class="brand-logo" src="images/promis.png" alt="PARENTYX - Ruta de crianza saludable">
+            </a>
+
+            <nav class="main-nav" aria-label="Navegación principal">
+                <a href="#actividades">Actividades</a>
+                <a href="#lecturas">Lecturas</a>
+                <a href="#conexion">Para Padres</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="products-menu">
+                        Productos <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-dropdown-menu" id="products-menu">
+                        <a href="#baterias">Baterías</a>
+                        <a href="#metodologias">Metodologías</a>
+                    </div>
+                </div>
+                <a href="#sobre-nosotros">Sobre nosotros</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="login.html" class="btn btn-login">Inicia sesión</a>
+                <a href="#registro" class="btn btn-register">Regístrate</a>
+
+                <div class="account-menu" hidden>
+                    <button class="account-toggle" type="button" aria-expanded="false" aria-controls="account-panel" aria-label="Abrir menú de cuenta">
+                        <span class="account-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="account-panel" id="account-panel" hidden>
+                        <span class="account-label">Cuenta</span>
+                        <strong class="account-email"></strong>
+                        <button class="account-logout" type="button">Cerrar sesión</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- =========================
+             HERO
+        ========================== -->
+        <section class="hero">
+            <div class="hero-background-shape hero-shape-one"></div>
+            <div class="hero-background-shape hero-shape-two"></div>
+            <div class="hero-background-shape hero-shape-three"></div>
+
+            <div class="hero-content">
+                <div class="hero-copy">
+                    <h1>
+                        Crianza, paternidad y
+                        actividades para crear
+                        momentos inolvidables.
+                    </h1>
+
+                    <p>
+                        Todo lo que necesitas para acompañar a tus hijos
+                        con amor, aprender juntos y disfrutar cada momento.
+                    </p>
+
+                    <a href="#registro" class="btn btn-primary">Conoce más</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-circle"></div>
+                <img class="image-placeholder hero-image-placeholder" src="images/Hero.png" alt="Familia PARENTYX">
+                <div class="hero-label">
+                    <span>EL</span>
+                    <strong>LUGAR DE LOS <br>PADRES Y TUTORES</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             REGISTRO / PRESENTACIÓN
+        ========================== -->
+        <section class="registration-section" id="registro">
+            <div class="registration-image">
+                <img class="registration-placeholder" src="images/Para%20padres.jfif" alt="Recursos para padres">
+
+                <div class="decorative-shape shape-left"></div>
+                <div class="decorative-shape shape-phone">
+                    <span>APP</span>
+                </div>
+            </div>
+
+            <div class="registration-card">
+                <span class="eyebrow">REGISTRO</span>
+
+                <h2>
+                    Nuestro espacio para mamás como tú
+                </h2>
+
+                <p>
+                    Regístrate y personaliza tu experiencia creando un perfil
+                    para cada uno de tus hijos, y accede a contenido pensado
+                    para cada etapa de su crecimiento.
+                </p>
+
+                <form id="register-form" class="auth-form">
+                    <label for="register-email">Correo electrónico</label>
+                    <input id="register-email" name="email" type="email" autocomplete="email" required>
+
+                    <label for="register-password">Contraseña</label>
+                    <input id="register-password" name="password" type="password" autocomplete="new-password" minlength="6" required>
+
+                    <label for="register-password-confirmation">Confirmar contraseña</label>
+                    <input id="register-password-confirmation" name="passwordConfirmation" type="password" autocomplete="new-password" minlength="6" required>
+
+                    <button type="submit" class="btn btn-primary">Crear cuenta</button>
+                    <p id="register-message" class="auth-message" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- =========================
+             SECCIONES PREPARADAS
+        ========================== -->
+        <section class="content-section" id="actividades">
+            <div class="section-heading">
+                <span class="eyebrow">PARENTYX</span>
+                <h2>Actividades</h2>
+                <p>Actividades para aprender, compartir y crear momentos especiales en familia.</p>
+            </div>
+            <img class="section-placeholder section-image" src="images/Actividades.avif" alt="Actividades PARENTYX">
+        </section>
+
+        <section class="content-section" id="lecturas">
+            <div class="section-heading">
+                <span class="eyebrow">PARENTYX</span>
+                <h2>Lecturas</h2>
+                <p>Recursos y lecturas para acompañar el desarrollo emocional y familiar.</p>
+            </div>
+            <img class="section-placeholder section-image" src="images/Lecturas.jfif" alt="Lecturas PARENTYX">
+        </section>
+
+        <section class="content-section" id="conexion">
+            <div class="section-heading">
+                <span class="eyebrow">PARENTYX</span>
+                <h2>Para Padres</h2>
+                <p>Orientación y recursos para fortalecer la crianza y el vínculo familiar.</p>
+            </div>
+            <img class="section-placeholder section-image" src="images/Para%20padres.jfif" alt="Recursos para padres">
+        </section>
+
+        <section class="content-section" id="baterias">
+            <div class="section-heading">
+                <span class="eyebrow">PARENTYX</span>
+                <h2>Baterías</h2>
+                <p>Herramientas y recursos para acompañar las diferentes etapas de crecimiento.</p>
+            </div>
+            <div class="section-placeholder image-placeholder"><span>IMAGEN<br>DE BATERÍAS</span></div>
+        </section>
+
+        <section class="content-section" id="metodologias">
+            <div class="section-heading">
+                <span class="eyebrow">PARENTYX</span>
+                <h2>Metodologías</h2>
+                <p>Metodologías pensadas para facilitar el aprendizaje y la crianza saludable.</p>
+            </div>
+            <div class="section-placeholder image-placeholder"><span>IMAGEN<br>DE METODOLOGÍAS</span></div>
+        </section>
+
+        <section class="content-section about-section" id="sobre-nosotros">
+            <div class="section-heading">
+                <span class="eyebrow">PARENTYX</span>
+                <h2>Sobre nosotros</h2>
+                <p>Conoce la misión y la visión que orientan nuestro propósito.</p>
+            </div>
+
+            <div class="about-columns">
+                <article class="about-column">
+                    <div>
+                        <span class="eyebrow">NUESTRO PROPÓSITO</span>
+                        <h3>Misión</h3>
+                        <p>Escribe aquí la misión de PARENTYX y el propósito que guía nuestro trabajo con las familias.</p>
+                    </div>
+                    <img class="section-placeholder section-image" src="images/Mision.png" alt="Misión de PARENTYX">
+                </article>
+
+                <article class="about-column">
+                    <div>
+                        <span class="eyebrow">NUESTRO FUTURO</span>
+                        <h3>Visión</h3>
+                        <p>Escribe aquí la visión de PARENTYX y el impacto que queremos generar en la crianza saludable.</p>
+                    </div>
+                    <img class="section-placeholder section-image" src="images/Vision.png" alt="Visión de PARENTYX">
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 PARENTYX - Ruta de crianza saludable</p>
+    </footer>
+
+    <script type="module" src="js/script.js"></script>
+</body>
+</html>
