@@ -1,15 +1,17 @@
-import { auth } from "./firebase.js";
+import { auth, db } from "./firebase.js";
 import {
     createUserWithEmailAndPassword,
     onAuthStateChanged,
     signOut
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+import { doc, getDoc } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector(".site-header");
     const registerForm = document.querySelector("#register-form");
     const registerMessage = document.querySelector("#register-message");
     const registrationSection = document.querySelector(".registration-section");
+    const profileSurveyPrompt = document.querySelector("#encuesta-perfiladora");
     const headerActions = document.querySelector(".header-actions");
     const accountMenu = document.querySelector(".account-menu");
     const accountToggle = document.querySelector(".account-toggle");
@@ -19,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const productsDropdown = document.querySelector(".nav-dropdown");
     const productsToggle = document.querySelector(".nav-dropdown-toggle");
     const premiumLink = document.querySelector(".premium-link");
+    const returnedFromSurvey = new URLSearchParams(window.location.search).get("surveyCompleted") === "1";
 
     // Mantiene el header sólido y visible al hacer scroll.
     window.addEventListener("scroll", () => {
@@ -29,12 +32,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
         const isAuthenticated = Boolean(user);
 
         headerActions.classList.toggle("is-authenticated", isAuthenticated);
         accountMenu.classList.toggle("is-visible", isAuthenticated);
         registrationSection.classList.toggle("is-authenticated", isAuthenticated);
+        profileSurveyPrompt.hidden = true;
         premiumLink.href = isAuthenticated ? "premium.html" : "login.html";
         premiumLink.classList.toggle("is-unlocked", isAuthenticated);
         premiumLink.setAttribute(
@@ -44,6 +48,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (user) {
             accountEmail.textContent = user.email;
+            if (returnedFromSurvey) {
+                markSurveyAsCompletedLocally(user.uid);
+                hideSurveyPrompt(profileSurveyPrompt);
+                window.history.replaceState({}, document.title, "index.html");
+                return;
+            }
+
+            if (hasCompletedSurveyLocally(user.uid)) {
+                hideSurveyPrompt(profileSurveyPrompt);
+                return;
+            }
+
+            try {
+                const profileSnapshot = await getDoc(doc(db, "profiles", user.uid));
+                if (profileSnapshot.data()?.surveyCompleted === true) {
+                    markSurveyAsCompletedLocally(user.uid);
+                    hideSurveyPrompt(profileSurveyPrompt);
+                } else {
+                    profileSurveyPrompt.hidden = false;
+                }
+            } catch (error) {
+                profileSurveyPrompt.hidden = false;
+                console.error("No fue posible consultar el perfil del usuario.", error);
+            }
         } else {
             closeAccountPanel();
         }
@@ -113,6 +141,20 @@ function closeProductsDropdown() {
 
     productsDropdown.classList.remove("is-open");
     productsToggle.setAttribute("aria-expanded", "false");
+}
+
+function hideSurveyPrompt(prompt) {
+    prompt.hidden = true;
+    prompt.classList.add("is-survey-completed");
+    prompt.setAttribute("aria-hidden", "true");
+}
+
+function hasCompletedSurveyLocally(userId) {
+    return localStorage.getItem(`parentyx-survey-completed-${userId}`) === "true";
+}
+
+function markSurveyAsCompletedLocally(userId) {
+    localStorage.setItem(`parentyx-survey-completed-${userId}`, "true");
 }
 
 function getRegistrationErrorMessage(errorCode) {

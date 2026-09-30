@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Encuesta perfiladora PARENTYX">
+    <title>Encuesta perfiladora - PARENTYX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="survey-page">
+    <main class="survey-layout">
+        <header class="survey-header">
+            <a href="index.html" aria-label="Volver al inicio">
+                <img class="brand-logo" src="images/promis.png" alt="PARENTYX - Ruta de crianza saludable">
+            </a>
+            <span class="eyebrow">PARENTYX</span>
+            <h1>Encuesta de afiliación y caracterización del cuidador</h1>
+            <p>La información suministrada será utilizada para orientar la atención y conocer las necesidades del niño, niña y su familia. Por favor, responde las siguientes preguntas con información verídica.</p>
+        </header>
+
+        <form id="profile-survey-form" class="profile-survey-form">
+            <fieldset>
+                <legend>Información del cuidador y del niño o niña</legend>
+
+                <label for="caregiver-name">1. Nombre completo del cuidador o padre/madre</label>
+                <input id="caregiver-name" name="caregiverName" type="text" required>
+
+                <fieldset class="nested-fieldset">
+                    <legend>2. ¿Qué parentesco o relación tiene con el niño o niña?</legend>
+                    <label><input type="radio" name="relationship" value="Madre" required> Madre</label>
+                    <label><input type="radio" name="relationship" value="Padre"> Padre</label>
+                    <label><input type="radio" name="relationship" value="Abuelo(a)"> Abuelo(a)</label>
+                    <label><input type="radio" name="relationship" value="Hermano(a)"> Hermano(a)</label>
+                    <label><input type="radio" name="relationship" value="Tío(a)"> Tío(a)</label>
+                    <label><input type="radio" name="relationship" value="Otro familiar"> Otro familiar</label>
+                    <label><input type="radio" name="relationship" value="Cuidador(a) sin parentesco"> Cuidador(a) sin parentesco</label>
+                    <label><input type="radio" name="relationship" value="Otro"> Otro</label>
+                    <input name="relationshipOther" type="text" placeholder="Especifica si elegiste Otro">
+                </fieldset>
+
+                <div class="survey-two-columns">
+                    <div>
+                        <label for="caregiver-age">3. Edad del cuidador o padre/madre</label>
+                        <input id="caregiver-age" name="caregiverAge" type="number" min="1" max="120" required>
+                    </div>
+                    <div>
+                        <label for="child-age">4. Edad del niño o niña</label>
+                        <input id="child-age" name="childAge" type="number" min="0" max="120" required>
+                    </div>
+                </div>
+
+                <label for="child-living-with">5. ¿Con quién vive actualmente el niño o niña?</label>
+                <select id="child-living-with" name="childLivingWith" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>Con ambos padres</option>
+                    <option>Con la madre</option>
+                    <option>Con el padre</option>
+                    <option>Con abuelos u otros familiares</option>
+                    <option>Con un cuidador diferente a la familia</option>
+                    <option>Otro</option>
+                </select>
+                <input name="childLivingWithOther" type="text" placeholder="Especifica si elegiste Otro">
+            </fieldset>
+
+            <fieldset>
+                <legend>Salud emocional y comportamiento</legend>
+
+                <fieldset class="nested-fieldset">
+                    <legend>6. ¿El niño o niña tiene hermanos?</legend>
+                    <label><input type="radio" name="hasSiblings" value="Sí" required> Sí</label>
+                    <label><input type="radio" name="hasSiblings" value="No"> No</label>
+                </fieldset>
+
+                <label for="siblings-count">7. Si respondió “Sí”, ¿cuántos hermanos tiene?</label>
+                <select id="siblings-count" name="siblingsCount" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4 o más</option>
+                    <option>No aplica</option>
+                </select>
+
+                <fieldset class="nested-fieldset">
+                    <legend>8. ¿Ha observado recientemente cambios emocionales o de comportamiento que le generen preocupación?</legend>
+                    <label><input type="radio" name="emotionalChanges" value="Sí" required> Sí</label>
+                    <label><input type="radio" name="emotionalChanges" value="No"> No</label>
+                    <label><input type="radio" name="emotionalChanges" value="No estoy seguro(a)"> No estoy seguro(a)</label>
+                </fieldset>
+
+                <fieldset class="nested-fieldset">
+                    <legend>9. ¿Ha recibido orientación psicológica o apoyo profesional por situaciones emocionales o de comportamiento?</legend>
+                    <label><input type="radio" name="professionalSupport" value="Sí, actualmente" required> Sí, actualmente</label>
+                    <label><input type="radio" name="professionalSupport" value="Sí, anteriormente"> Sí, anteriormente</label>
+                    <label><input type="radio" name="professionalSupport" value="No"> No</label>
+                    <label><input type="radio" name="professionalSupport" value="No estoy seguro(a)"> No estoy seguro(a)</label>
+                </fieldset>
+            </fieldset>
+
+            <fieldset>
+                <legend>Dinámica familiar y redes de apoyo</legend>
+
+                <label for="emotions-frequency">10. ¿Con qué frecuencia conversa con el niño o niña sobre sus emociones y preocupaciones?</label>
+                <select id="emotions-frequency" name="emotionsFrequency" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>Todos los días</option>
+                    <option>Varias veces por semana</option>
+                    <option>Algunas veces al mes</option>
+                    <option>Rara vez</option>
+                    <option>Nunca</option>
+                </select>
+
+                <label for="communication-quality">11. ¿Cómo describiría la comunicación entre usted y el niño o niña?</label>
+                <select id="communication-quality" name="communicationQuality" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>Muy buena</option>
+                    <option>Buena</option>
+                    <option>Regular</option>
+                    <option>Difícil</option>
+                    <option>Muy difícil</option>
+                </select>
+
+                <label for="activities-frequency">12. ¿Con qué frecuencia realizan actividades juntos?</label>
+                <select id="activities-frequency" name="activitiesFrequency" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>Todos los días</option>
+                    <option>Varias veces por semana</option>
+                    <option>Una vez por semana</option>
+                    <option>Algunas veces al mes</option>
+                    <option>Rara vez o nunca</option>
+                </select>
+
+                <label for="conflict-frequency">13. ¿Con qué frecuencia se presentan discusiones o conflictos en el hogar que involucren al niño o niña?</label>
+                <select id="conflict-frequency" name="conflictFrequency" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>Nunca</option>
+                    <option>Rara vez</option>
+                    <option>Algunas veces</option>
+                    <option>Frecuentemente</option>
+                    <option>Siempre</option>
+                </select>
+
+                <label for="support-network">14. ¿Considera que cuenta con apoyo de familiares, amigos o personas cercanas?</label>
+                <select id="support-network" name="supportNetwork" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>Sí, suficiente</option>
+                    <option>Sí, pero insuficiente</option>
+                    <option>No</option>
+                    <option>No estoy seguro(a)</option>
+                </select>
+
+                <label for="child-routines">15. ¿El niño o niña cuenta con rutinas establecidas?</label>
+                <select id="child-routines" name="childRoutines" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>Sí, completamente</option>
+                    <option>Sí, parcialmente</option>
+                    <option>No</option>
+                    <option>No estoy seguro(a)</option>
+                </select>
+            </fieldset>
+
+            <fieldset class="question-fieldset">
+                <legend class="question-legend">16. Cuéntanos brevemente qué situación está presentando actualmente el niño o niña y qué le preocupa</legend>
+                <textarea name="currentConcern" rows="7" required></textarea>
+            </fieldset>
+
+            <button class="btn btn-primary survey-submit" type="submit">Enviar encuesta</button>
+            <p id="survey-message" class="auth-message" role="status" aria-live="polite"></p>
+        </form>
+    </main>
+
+    <script type="module" src="js/survey.js"></script>
+</body>
+</html>
