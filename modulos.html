@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Módulos premium de Biblioteca Parentyx">
+    <title>Módulos - Biblioteca Parentyx</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="private-page" data-private-page>
+    <div class="private-layout">
+        <header class="private-header">
+            <div>
+                <a href="index.html" aria-label="Volver al inicio">
+                    <img class="brand-logo" src="images/promis.png" alt="PARENTYX - Ruta de crianza saludable">
+                </a>
+                <h1>Módulos Parentyx</h1>
+                <p>Selecciona un módulo para explorar sus contenidos de acompañamiento familiar.</p>
+            </div>
+            <a class="btn btn-secondary" href="biblioteca.html">Biblioteca</a>
+        </header>
+
+        <main class="private-content">
+            <div class="modules-layout">
+                <aside class="modules-nav" aria-label="Lista de módulos">
+                    <h2>Contenido</h2>
+                    <button class="module-button is-active" type="button" data-module="regulacion">Módulo I: Regulación y Afecto</button>
+                    <button class="module-button" type="button" data-module="coherencia">Módulo II: Coherencia parental</button>
+                    <button class="module-button" type="button" data-module="vinculo">Módulo III: Vínculo y sensibilidad</button>
+                    <button class="module-button" type="button" data-module="entorno">Módulo IV: Entorno y estimulación</button>
+                </aside>
+
+                <section class="module-content" aria-live="polite" aria-labelledby="module-title">
+                    <span class="eyebrow">MÓDULO I</span>
+                    <h2 id="module-title">Regulación y Afecto</h2>
+                    <p id="module-description">Aprende a reconocer y acompañar las emociones de los niños y niñas, construyendo respuestas sensibles que favorezcan la seguridad emocional.</p>
+                    <ul id="module-topics">
+                        <li>Reconocimiento y validación de las emociones.</li>
+                        <li>Estrategias para acompañar momentos de desregulación.</li>
+                        <li>El afecto como base para el desarrollo emocional.</li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <section class="access-message" hidden>
+        <h1>Inicia sesión para entrar</h1>
+        <p>Los módulos están disponibles para usuarios registrados.</p>
+        <a class="btn btn-primary" href="login.html">Inicia sesión</a>
+        <a class="auth-back-link" href="index.html">Volver al inicio</a>
+    </section>
+
+    <script type="module" src="js/private-content.js"></script>
+</body>
+</html>

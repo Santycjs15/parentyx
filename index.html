@@ -24,9 +24,11 @@
             </a>
 
             <nav class="main-nav" aria-label="Navegación principal">
-                <a href="#actividades">Actividades</a>
-                <a href="#lecturas">Lecturas</a>
-                <a href="#conexion">Para Padres</a>
+                <a class="premium-link" href="login.html" aria-label="Contenido premium. Inicia sesión para acceder">
+                    <span class="premium-lock" aria-hidden="true"></span>
+                    <span>Contenido premium</span>
+                </a>
+                <a href="#videos">Videos</a>
                 <div class="nav-dropdown">
                     <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="products-menu">
                         Productos <span class="arrow">▼</span>
@@ -36,7 +38,7 @@
                         <a href="#metodologias">Metodologías</a>
                     </div>
                 </div>
-                <a href="#sobre-nosotros">Sobre nosotros</a>
+                <a href="#sobre-nosotros">Quienes somos</a>
             </nav>
 
             <div class="header-actions">
@@ -139,31 +141,29 @@
         <!-- =========================
              SECCIONES PREPARADAS
         ========================== -->
-        <section class="content-section" id="actividades">
+        <section class="content-section library-preview" id="biblioteca">
             <div class="section-heading">
                 <span class="eyebrow">PARENTYX</span>
-                <h2>Actividades</h2>
-                <p>Actividades para aprender, compartir y crear momentos especiales en familia.</p>
+                <h2>Biblioteca Parentyx</h2>
+                <p>Un espacio privado con actividades y lecturas para cuidadores, padres y madres.</p>
+                <a class="btn btn-primary" href="modulos.html">Ver módulos</a>
             </div>
-            <img class="section-placeholder section-image" src="images/Actividades.avif" alt="Actividades PARENTYX">
+            <img class="section-placeholder section-image" src="images/Lecturas.jfif" alt="Biblioteca Parentyx">
         </section>
 
-        <section class="content-section" id="lecturas">
+        <section class="content-section video-section" id="videos">
             <div class="section-heading">
                 <span class="eyebrow">PARENTYX</span>
-                <h2>Lecturas</h2>
-                <p>Recursos y lecturas para acompañar el desarrollo emocional y familiar.</p>
+                <h2>Video Podcast</h2>
+                <p>Contenido para acompañar a las familias en el fortalecimiento de la crianza y el vínculo familiar.</p>
             </div>
-            <img class="section-placeholder section-image" src="images/Lecturas.jfif" alt="Lecturas PARENTYX">
-        </section>
-
-        <section class="content-section" id="conexion">
-            <div class="section-heading">
-                <span class="eyebrow">PARENTYX</span>
-                <h2>Para Padres</h2>
-                <p>Orientación y recursos para fortalecer la crianza y el vínculo familiar.</p>
+            <div class="video-wrapper">
+                <iframe
+                    src="https://www.youtube.com/embed/CjO7pKCfHw8"
+                    title="Video Podcast PARENTYX"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
             </div>
-            <img class="section-placeholder section-image" src="images/Para%20padres.jfif" alt="Recursos para padres">
         </section>
 
         <section class="content-section" id="baterias">
@@ -187,8 +187,8 @@
         <section class="content-section about-section" id="sobre-nosotros">
             <div class="section-heading">
                 <span class="eyebrow">PARENTYX</span>
-                <h2>Sobre nosotros</h2>
-                <p>Conoce la misión y la visión que orientan nuestro propósito.</p>
+                <h2>Quienes somos</h2>
+                <p>Parentyx es una IPS orientada a la promoción de la salud mental y la prevención de dificultades emocionales y comportamentales durante la primera infancia. Nuestra labor se centra en acompañar a padres, madres y cuidadores, fortaleciendo prácticas de crianza saludables que favorezcan el desarrollo integral de niños y niñas.</p>
             </div>
 
             <div class="about-columns">
@@ -196,7 +196,7 @@
                     <div>
                         <span class="eyebrow">NUESTRO PROPÓSITO</span>
                         <h3>Misión</h3>
-                        <p>Escribe aquí la misión de PARENTYX y el propósito que guía nuestro trabajo con las familias.</p>
+                        <p>Promover el bienestar psicológico y el desarrollo integral de la infancia mediante estrategias de promoción y prevención basadas en la psicoeducación sobre el fortalecimiento de habilidades de crianza y cuidado. A través de productos innovadores de evaluación y orientación, buscamos potenciar factores que favorezcan la construcción de familias y entornos saludables.</p>
                     </div>
                     <img class="section-placeholder section-image" src="images/Mision.png" alt="Misión de PARENTYX">
                 </article>
@@ -205,10 +205,44 @@
                     <div>
                         <span class="eyebrow">NUESTRO FUTURO</span>
                         <h3>Visión</h3>
-                        <p>Escribe aquí la visión de PARENTYX y el impacto que queremos generar en la crianza saludable.</p>
+                        <p>En el 2036, buscamos consolidar a PARENTYX como una IPS reconocida a nivel regional y nacional por la calidad de sus servicios de promoción, prevención y atención en salud mental infantil y familiar, con un equipo interdisciplinario altamente calificado. Seremos una institución especializada en el acompañamiento integral de niños, niñas y sus cuidadores, promoviendo relaciones familiares saludables y contribuyendo a la prevención de dificultades emocionales y conductuales, mediante una atención humanizada e integral.</p>
                     </div>
                     <img class="section-placeholder section-image" src="images/Vision.png" alt="Visión de PARENTYX">
                 </article>
+            </div>
+
+            <div class="values-section">
+                <div class="section-heading">
+                    <span class="eyebrow">NUESTROS PRINCIPIOS</span>
+                    <h3>Valores corporativos</h3>
+                </div>
+
+                <div class="values-grid">
+                    <article class="value-card">
+                        <h3>Empatía</h3>
+                        <p>Escuchamos y comprendemos a niños, niñas, padres y cuidadores desde el respeto, valorando sus emociones y experiencias sin juicios.</p>
+                    </article>
+
+                    <article class="value-card">
+                        <h3>Compromiso</h3>
+                        <p>Trabajamos por el bienestar emocional infantil, brindando a las familias herramientas prácticas que puedan integrar en su vida cotidiana.</p>
+                    </article>
+
+                    <article class="value-card">
+                        <h3>Cuidado</h3>
+                        <p>Promovemos entornos familiares seguros y afectivos, fortaleciendo la capacidad de los cuidadores para reconocer y responder a las necesidades emocionales de los niños.</p>
+                    </article>
+
+                    <article class="value-card">
+                        <h3>Innovación</h3>
+                        <p>Desarrollamos estrategias dinámicas, lúdicas y accesibles para facilitar el aprendizaje aplicable a la vida familiar.</p>
+                    </article>
+
+                    <article class="value-card">
+                        <h3>Transparencia</h3>
+                        <p>Actuamos con honestidad, responsabilidad y claridad, protegiendo la privacidad y dignidad de las familias y promoviendo relaciones basadas en la confianza.</p>
+                    </article>
+                </div>
             </div>
         </section>
 

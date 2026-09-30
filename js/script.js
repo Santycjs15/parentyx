@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const accountLogout = document.querySelector(".account-logout");
     const productsDropdown = document.querySelector(".nav-dropdown");
     const productsToggle = document.querySelector(".nav-dropdown-toggle");
+    const premiumLink = document.querySelector(".premium-link");
 
     // Mantiene el header sólido y visible al hacer scroll.
     window.addEventListener("scroll", () => {
@@ -34,6 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
         headerActions.classList.toggle("is-authenticated", isAuthenticated);
         accountMenu.classList.toggle("is-visible", isAuthenticated);
         registrationSection.classList.toggle("is-authenticated", isAuthenticated);
+        premiumLink.href = isAuthenticated ? "premium.html" : "login.html";
+        premiumLink.classList.toggle("is-unlocked", isAuthenticated);
+        premiumLink.setAttribute(
+            "aria-label",
+            isAuthenticated ? "Contenido premium" : "Contenido premium. Inicia sesión para acceder"
+        );
 
         if (user) {
             accountEmail.textContent = user.email;
