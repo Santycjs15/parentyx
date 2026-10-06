@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Encuesta perfiladora PARENTYX">
-    <title>Encuesta perfiladora - PARENTYX</title>
+    <meta name="description" content="Registro y encuesta perfiladora PARENTYX">
+    <title>Registro PARENTYX</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,11 +17,24 @@
                 <img class="brand-logo" src="images/promis.png" alt="PARENTYX - Ruta de crianza saludable">
             </a>
             <span class="eyebrow">PARENTYX</span>
-            <h1>Encuesta de afiliación y caracterización del cuidador</h1>
+            <h1>Registro y encuesta perfiladora</h1>
             <p>La información suministrada será utilizada para orientar la atención y conocer las necesidades del niño, niña y su familia. Por favor, responde las siguientes preguntas con información verídica.</p>
         </header>
 
         <form id="profile-survey-form" class="profile-survey-form">
+            <fieldset>
+                <legend>Datos de acceso</legend>
+
+                <label for="register-email">Correo electrónico</label>
+                <input id="register-email" name="email" type="email" autocomplete="email" required>
+
+                <label for="register-password">Contraseña</label>
+                <input id="register-password" name="password" type="password" autocomplete="new-password" minlength="6" required>
+
+                <label for="register-password-confirmation">Confirmar contraseña</label>
+                <input id="register-password-confirmation" name="passwordConfirmation" type="password" autocomplete="new-password" minlength="6" required>
+            </fieldset>
+
             <fieldset>
                 <legend>Información del cuidador y del niño o niña</legend>
 
@@ -167,7 +180,7 @@
                 <textarea name="currentConcern" rows="7" required></textarea>
             </fieldset>
 
-            <button class="btn btn-primary survey-submit" type="submit">Enviar encuesta</button>
+            <button class="btn btn-primary survey-submit" type="submit">Crear cuenta</button>
             <p id="survey-message" class="auth-message" role="status" aria-live="polite"></p>
         </form>
     </main>
