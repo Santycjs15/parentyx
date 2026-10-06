@@ -1284,6 +1284,36 @@ a {
     gap: 28px;
 }
 
+.monthly-survey-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    margin-bottom: 28px;
+    padding: 32px;
+    background: #17355F;
+    border-radius: 24px 24px 24px 0;
+}
+
+.monthly-survey-home {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.monthly-survey-card h2 {
+    margin: 8px 0 10px;
+    color: var(--blue-light);
+}
+
+.monthly-survey-card p {
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+.monthly-survey-card .btn {
+    flex-shrink: 0;
+}
+
 .premium-option {
     display: flex;
     min-height: 260px;
@@ -1467,6 +1497,11 @@ a {
 
     .premium-options {
         grid-template-columns: 1fr;
+    }
+
+    .monthly-survey-card {
+        align-items: flex-start;
+        flex-direction: column;
     }
 
     .modules-layout {

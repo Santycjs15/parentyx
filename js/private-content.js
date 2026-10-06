@@ -1,5 +1,7 @@
 import { auth } from "./firebase.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+import { db } from "./firebase.js";
+import { doc, getDoc } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 const privateContent = document.querySelector(".private-content");
 const accessMessage = document.querySelector(".access-message");
@@ -8,6 +10,8 @@ const moduleLabel = document.querySelector(".module-content .eyebrow");
 const moduleTitle = document.querySelector("#module-title");
 const moduleDescription = document.querySelector("#module-description");
 const moduleTopics = document.querySelector("#module-topics");
+const monthlySurveyPremium = document.querySelector(".monthly-survey-premium");
+const currentMonth = new Date().toISOString().slice(0, 7);
 
 const modules = {
     regulacion: {
@@ -52,10 +56,14 @@ const modules = {
     }
 };
 
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
     if (user) {
         privateContent.hidden = false;
         accessMessage.hidden = true;
+        if (monthlySurveyPremium) {
+            const surveySnapshot = await getDoc(doc(db, "profiles", user.uid, "monthlySurveys", currentMonth));
+            monthlySurveyPremium.hidden = surveySnapshot.exists();
+        }
         return;
     }
 

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Encuesta mensual de satisfacción y seguimiento PARENTYX">
+    <title>Encuesta mensual - PARENTYX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="survey-page">
+    <main class="survey-layout">
+        <header class="survey-header">
+            <a href="premium.html" aria-label="Volver al contenido premium">
+                <img class="brand-logo" src="images/promis.png" alt="PARENTYX - Ruta de crianza saludable">
+            </a>
+            <span class="eyebrow">SEGUIMIENTO FAMILIAR</span>
+            <h1>Encuesta mensual de satisfacción y seguimiento</h1>
+            <p>Dirigida a padres, madres y/o cuidadores. Esta encuesta tiene como finalidad conocer su experiencia durante el proceso de atención, identificar cambios percibidos en el niño o niña y reconocer aspectos que puedan mejorarse en las sesiones.</p>
+        </header>
+
+        <form id="monthly-survey-form" class="profile-survey-form">
+            <fieldset>
+                <legend>Experiencia durante el proceso</legend>
+
+                <label for="attention-process">1. ¿Cómo considera que ha sido el proceso de atención recibido durante este mes?</label>
+                <select id="attention-process" name="attentionProcess" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>Excelente</option>
+                    <option>Bueno</option>
+                    <option>Regular</option>
+                    <option>Malo</option>
+                    <option>Muy malo</option>
+                </select>
+
+                <label for="positive-changes">2. En comparación con el inicio del proceso, ¿ha observado cambios positivos en el comportamiento del niño o niña?</label>
+                <select id="positive-changes" name="positiveChanges" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>Sí, muchos cambios</option>
+                    <option>Sí, algunos cambios</option>
+                    <option>Pocos cambios</option>
+                    <option>No he observado cambios</option>
+                    <option>No estoy seguro(a)</option>
+                </select>
+
+                <label for="emotional-management">3. ¿Considera que ha mejorado el manejo de las emociones del niño o niña?</label>
+                <select id="emotional-management" name="emotionalManagement" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>Ha mejorado mucho</option>
+                    <option>Ha mejorado</option>
+                    <option>Ha mejorado poco</option>
+                    <option>No ha mejorado</option>
+                    <option>No estoy seguro(a)</option>
+                </select>
+
+                <label for="guidance-help">4. ¿Las orientaciones brindadas durante las sesiones le han ayudado a comprender y manejar mejor las situaciones de crianza?</label>
+                <select id="guidance-help" name="guidanceHelp" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>Mucho</option>
+                    <option>Bastante</option>
+                    <option>Poco</option>
+                    <option>Nada</option>
+                </select>
+
+                <label for="strategies-useful">5. ¿Considera que las estrategias aprendidas durante las sesiones han sido útiles en el hogar?</label>
+                <select id="strategies-useful" name="strategiesUseful" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>Muy útiles</option>
+                    <option>Útiles</option>
+                    <option>Poco útiles</option>
+                    <option>Nada útiles</option>
+                    <option>Aún no las hemos aplicado</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Comunicación y satisfacción</legend>
+
+                <label for="professional-communication">6. ¿Cómo considera la comunicación con el profesional que acompaña el proceso?</label>
+                <select id="professional-communication" name="professionalCommunication" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>Excelente</option>
+                    <option>Buena</option>
+                    <option>Regular</option>
+                    <option>Deficiente</option>
+                </select>
+
+                <label for="family-needs">7. ¿Considera que las sesiones están respondiendo a las necesidades del niño o niña y de su familia?</label>
+                <select id="family-needs" name="familyNeeds" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>Sí, completamente</option>
+                    <option>Sí, en gran medida</option>
+                    <option>Parcialmente</option>
+                    <option>No</option>
+                </select>
+
+                <label for="satisfaction-level">8. ¿Qué tan satisfecho(a) se encuentra con el proceso de atención recibido hasta el momento?</label>
+                <select id="satisfaction-level" name="satisfactionLevel" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>Muy satisfecho(a)</option>
+                    <option>Satisfecho(a)</option>
+                    <option>Ni satisfecho(a) ni insatisfecho(a)</option>
+                    <option>Insatisfecho(a)</option>
+                    <option>Muy insatisfecho(a)</option>
+                </select>
+
+                <label for="continue-support">9. ¿Considera que necesita continuar con el acompañamiento profesional?</label>
+                <select id="continue-support" name="continueSupport" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>Sí</option>
+                    <option>No</option>
+                    <option>No estoy seguro(a)</option>
+                </select>
+            </fieldset>
+
+            <fieldset class="question-fieldset">
+                <legend class="question-legend">10. ¿Qué considera que podríamos mejorar en las sesiones o en el acompañamiento brindado?</legend>
+                <textarea name="improvementSuggestions" rows="7" required></textarea>
+            </fieldset>
+
+            <button class="btn btn-primary survey-submit" type="submit">Enviar encuesta</button>
+            <p id="monthly-survey-message" class="auth-message" role="status" aria-live="polite"></p>
+        </form>
+    </main>
+
+    <script type="module" src="js/monthly-survey.js"></script>
+</body>
+</html>

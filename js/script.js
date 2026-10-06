@@ -1,5 +1,6 @@
-import { auth } from "./firebase.js";
+import { auth, db } from "./firebase.js";
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+import { doc, getDoc } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector(".site-header");
@@ -13,6 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const productsDropdown = document.querySelector(".nav-dropdown");
     const productsToggle = document.querySelector(".nav-dropdown-toggle");
     const premiumLink = document.querySelector(".premium-link");
+    const monthlySurveyHome = document.querySelector(".monthly-survey-home");
+    const currentMonth = new Date().toISOString().slice(0, 7);
 
     // Mantiene el header sólido y visible al hacer scroll.
     window.addEventListener("scroll", () => {
@@ -29,7 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
         headerActions.classList.toggle("is-authenticated", isAuthenticated);
         accountMenu.classList.toggle("is-visible", isAuthenticated);
         registrationSection.classList.toggle("is-authenticated", isAuthenticated);
-        premiumLink.href = isAuthenticated ? "premium.html" : "login.html";
+        monthlySurveyHome.hidden = true;
+        premiumLink.href = isAuthenticated ? "#contenido-premium" : "login.html";
         premiumLink.classList.toggle("is-unlocked", isAuthenticated);
         premiumLink.setAttribute(
             "aria-label",
@@ -38,6 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (user) {
             accountEmail.textContent = user.email;
+            try {
+                const surveySnapshot = await getDoc(doc(db, "profiles", user.uid, "monthlySurveys", currentMonth));
+                monthlySurveyHome.hidden = surveySnapshot.exists();
+            } catch (error) {
+                monthlySurveyHome.hidden = false;
+                console.error("No fue posible consultar la encuesta mensual.", error);
+            }
         } else {
             closeAccountPanel();
         }
