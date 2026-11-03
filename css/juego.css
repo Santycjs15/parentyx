@@ -1,0 +1,485 @@
+/* =========================
+   PARENTYX - JUEGO DE DECISIONES
+   Estilos exclusivos de juego.html (todas las clases empiezan por "juego-").
+   ========================= */
+
+:root {
+    /* Colores por posición: neutros, sin connotación de bueno o malo. */
+    --juego-coral: #F2A495;
+    --juego-lavanda: #BBA9E8;
+    --juego-turquesa: #79CFC5;
+
+    /* Fondo de la página: se oscurece y satura un poco con cada paso. */
+    --juego-fondo-tono: 32;
+    --juego-tarjeta: #FFFCF8;
+    --juego-texto: var(--text-dark);
+    --juego-placeholder: #E6E6E6;
+    --juego-giro: 0.9s;
+}
+
+.juego-color-izquierda { --juego-color: var(--juego-coral); }
+.juego-color-centro { --juego-color: var(--juego-lavanda); }
+.juego-color-derecha { --juego-color: var(--juego-turquesa); }
+
+body.juego-page {
+    --juego-paso: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--juego-texto);
+    --juego-fondo-base: hsl(
+        var(--juego-fondo-tono)
+        calc(55% + var(--juego-paso) * 6%)
+        calc(95% - var(--juego-paso) * 5%)
+    );
+    /* Se tiñe con el color de la última opción elegida (mismo momento que los garabatos). */
+    background: color-mix(
+        in srgb,
+        var(--juego-fondo-acento, var(--juego-fondo-base)) var(--juego-fondo-mezcla),
+        var(--juego-fondo-base)
+    );
+    --juego-fondo-mezcla: 22%;
+    transition: background 0.6s ease;
+}
+
+body.juego-page[data-garabatos="izquierda"] { --juego-fondo-acento: var(--juego-coral); }
+body.juego-page[data-garabatos="centro"] { --juego-fondo-acento: var(--juego-lavanda); }
+body.juego-page[data-garabatos="derecha"] { --juego-fondo-acento: var(--juego-turquesa); }
+
+/* ---------- Encabezado ---------- */
+
+.juego-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 5vw;
+    background: var(--blue-header);
+    color: var(--white);
+}
+
+.juego-header .brand-logo {
+    width: 160px;
+    height: 64px;
+}
+
+.juego-volver {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.juego-volver:hover,
+.juego-volver:focus-visible {
+    text-decoration: underline;
+}
+
+/* ---------- Rastro de decisiones ---------- */
+
+.juego-rastro {
+    padding: 18px 5vw 6px;
+    text-align: center;
+}
+
+.juego-rastro-titulo {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 8px;
+}
+
+.juego-rastro-camino {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 22px;
+}
+
+.juego-rastro-punto {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--juego-color, #9AA7BA);
+    border: 3px solid var(--juego-tarjeta);
+    box-shadow: 0 0 0 1px rgba(19, 42, 74, 0.15);
+    transform: scale(0);
+    transition: transform 0.4s ease 0.5s;
+}
+
+.juego-rastro-segmento {
+    flex: 0 0 auto;
+    width: 0;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--juego-color);
+    transition: width var(--juego-giro) ease;
+}
+
+.juego-rastro-punto.is-visible { transform: scale(1); }
+.juego-rastro-segmento.is-visible { width: clamp(36px, 10vw, 80px); }
+.juego-rastro-inicio { transition: none; }
+
+/* ---------- Escenario y pantallas ---------- */
+
+.juego-main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 16px 5vw 48px;
+}
+
+.juego-escenario {
+    display: grid;
+    width: min(1100px, 100%);
+    perspective: 1800px;
+}
+
+.juego-pantalla {
+    grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: clamp(24px, 4vw, 48px);
+    background: var(--juego-tarjeta);
+    border-radius: 28px;
+    box-shadow: 0 18px 40px rgba(19, 42, 74, 0.12);
+    text-align: center;
+    backface-visibility: hidden;
+}
+
+.juego-pantalla.is-saliendo {
+    z-index: 2;
+    pointer-events: none;
+}
+
+.juego-titulo {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    color: var(--blue-dark);
+    line-height: 1.15;
+}
+
+.juego-intro,
+.juego-final-texto {
+    max-width: 640px;
+    font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+    line-height: 1.6;
+}
+
+.juego-pantalla-inicio {
+    min-height: 60vh;
+}
+
+.juego-boton {
+    font-family: inherit;
+    font-size: 1.05rem;
+    cursor: pointer;
+}
+
+.juego-boton:focus-visible,
+.juego-opcion:focus-visible {
+    outline: 4px solid var(--blue-dark);
+    outline-offset: 4px;
+}
+
+[data-enfoque]:focus {
+    outline: none;
+}
+
+.juego-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* ---------- Imágenes y placeholders ---------- */
+
+.juego-media {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: var(--juego-placeholder);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.juego-media-aviso {
+    padding: 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #6B6B6B;
+    word-break: break-all;
+}
+
+.juego-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.juego-media.is-cargada {
+    background: transparent;
+}
+
+.juego-media.is-cargada .juego-media-aviso {
+    visibility: hidden;
+}
+
+.juego-media-situacion {
+    max-width: 760px;
+    aspect-ratio: 16 / 9;
+}
+
+.juego-media-opcion {
+    aspect-ratio: 4 / 3;
+}
+
+.juego-situacion-texto {
+    max-width: 760px;
+    font-size: clamp(1.25rem, 2.8vw, 1.7rem);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* ---------- Decisión ---------- */
+
+.juego-pantalla-decision {
+    display: grid;
+    grid-template-columns: repeat(var(--juego-columnas, 2), 1fr);
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.juego-opcion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    min-height: 60vh;
+    padding: clamp(20px, 3vw, 36px);
+    border: none;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    background: color-mix(in srgb, var(--juego-color) 18%, var(--juego-tarjeta));
+    transition: background 0.3s ease, opacity 0.3s ease, transform 0.25s ease;
+}
+
+.juego-opcion-izquierda { --juego-color: var(--juego-coral); }
+.juego-opcion-centro { --juego-color: var(--juego-lavanda); }
+.juego-opcion-derecha { --juego-color: var(--juego-turquesa); }
+
+.juego-opcion:hover {
+    background: color-mix(in srgb, var(--juego-color) 32%, var(--juego-tarjeta));
+}
+
+.juego-opcion-texto {
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.is-eligiendo .juego-opcion { opacity: 0.55; }
+
+.is-eligiendo .juego-opcion.is-elegida {
+    opacity: 1;
+    background: var(--juego-color);
+}
+
+/* ---------- Pantalla final ---------- */
+
+.juego-recorrido {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: min(640px, 100%);
+    text-align: left;
+}
+
+.juego-recorrido-paso {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--juego-color) 20%, var(--juego-tarjeta));
+}
+
+.juego-recorrido-punto {
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--juego-color);
+}
+
+/* ---------- Transiciones ---------- */
+
+.juego-sale-izquierda {
+    transform-origin: left center;
+    animation: juego-gira-izquierda var(--juego-giro) cubic-bezier(0.45, 0, 0.25, 1) forwards;
+}
+
+.juego-sale-derecha {
+    transform-origin: right center;
+    animation: juego-gira-derecha var(--juego-giro) cubic-bezier(0.45, 0, 0.25, 1) forwards;
+}
+
+.juego-sale-centro {
+    transform-origin: center bottom;
+    animation: juego-gira-centro var(--juego-giro) cubic-bezier(0.45, 0, 0.25, 1) forwards;
+}
+
+.juego-sale-fundido {
+    animation: juego-fundido 0.45s ease forwards;
+}
+
+@keyframes juego-gira-izquierda {
+    to { transform: rotateY(90deg); }
+}
+
+@keyframes juego-gira-derecha {
+    to { transform: rotateY(-90deg); }
+}
+
+@keyframes juego-gira-centro {
+    to { transform: rotateX(-90deg); }
+}
+
+@keyframes juego-fundido {
+    to { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.juego-page,
+    .juego-rastro-segmento,
+    .juego-rastro-punto,
+    .juego-opcion {
+        transition: none;
+    }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 700px) {
+    .juego-header .brand-logo {
+        width: 120px;
+        height: 48px;
+    }
+
+    .juego-pantalla-decision {
+        grid-template-columns: 1fr;
+    }
+
+    .juego-opcion {
+        min-height: auto;
+    }
+
+    .juego-media-opcion {
+        max-width: 320px;
+    }
+}
+
+/* ---------- Garabatos decorativos ---------- */
+
+body.juego-page {
+    --color-garabatos: #B8A99A;
+}
+
+body.juego-page[data-garabatos="izquierda"] { --color-garabatos: var(--juego-coral); }
+body.juego-page[data-garabatos="centro"] { --color-garabatos: var(--juego-lavanda); }
+body.juego-page[data-garabatos="derecha"] { --color-garabatos: var(--juego-turquesa); }
+
+/* El contenido queda por encima: los garabatos nunca lo tapan. */
+.juego-header,
+.juego-rastro,
+.juego-main {
+    position: relative;
+    z-index: 1;
+}
+
+.juego-garabatos {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.juego-garabato {
+    position: absolute;
+    display: block;
+    width: var(--g-tam);
+    height: var(--g-tam);
+    color: var(--color-garabatos);
+    opacity: min(0.7, calc(var(--g-op) + var(--juego-paso) * 0.08));
+    rotate: var(--g-giro);
+    transition: color 0.6s ease, opacity 0.6s ease;
+}
+
+.juego-garabato svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.juego-garabatos.is-pop .juego-garabato {
+    animation: juego-garabato-pop 0.5s ease var(--g-retraso) both;
+}
+
+@keyframes juego-garabato-pop {
+    50% { scale: 1.12; }
+}
+
+/* Posiciones fijas. Lado izquierdo: */
+.juego-garabato:nth-child(1)  { top: 9%;  left: 2%;  --g-tam: 96px;  --g-giro: -10deg; --g-op: 0.4;  --g-retraso: 0s; }
+.juego-garabato:nth-child(2)  { top: 27%; left: 5%;  --g-tam: 64px;  --g-giro: 8deg;   --g-op: 0.32; --g-retraso: 0.08s; }
+.juego-garabato:nth-child(3)  { top: 43%; left: 1.5%; --g-tam: 78px; --g-giro: -5deg;  --g-op: 0.45; --g-retraso: 0.16s; }
+.juego-garabato:nth-child(4)  { top: 60%; left: 4.5%; --g-tam: 54px; --g-giro: 13deg;  --g-op: 0.35; --g-retraso: 0.04s; }
+.juego-garabato:nth-child(5)  { top: 74%; left: 1%;  --g-tam: 106px; --g-giro: -14deg; --g-op: 0.3;  --g-retraso: 0.2s; }
+.juego-garabato:nth-child(6)  { bottom: 2%; left: 7%; --g-tam: 70px; --g-giro: 6deg;   --g-op: 0.42; --g-retraso: 0.12s; }
+/* Lado derecho: */
+.juego-garabato:nth-child(7)  { top: 8%;  right: 3%;  --g-tam: 72px;  --g-giro: 12deg;  --g-op: 0.38; --g-retraso: 0.1s; }
+.juego-garabato:nth-child(8)  { top: 24%; right: 1%;  --g-tam: 104px; --g-giro: -8deg;  --g-op: 0.3;  --g-retraso: 0.02s; }
+.juego-garabato:nth-child(9)  { top: 44%; right: 5%;  --g-tam: 60px;  --g-giro: 4deg;   --g-op: 0.44; --g-retraso: 0.18s; }
+.juego-garabato:nth-child(10) { top: 58%; right: 1.5%; --g-tam: 88px; --g-giro: -13deg; --g-op: 0.34; --g-retraso: 0.06s; }
+.juego-garabato:nth-child(11) { top: 76%; right: 4%;  --g-tam: 66px;  --g-giro: 9deg;   --g-op: 0.4;  --g-retraso: 0.14s; }
+.juego-garabato:nth-child(12) { bottom: 2%; right: 1%; --g-tam: 82px; --g-giro: -3deg;  --g-op: 0.36; --g-retraso: 0.22s; }
+
+/* En pantallas pequeñas: solo 4 pequeños, arriba y abajo del juego. */
+@media (max-width: 899px) {
+    .juego-garabato { display: none; }
+
+    .juego-garabato:nth-child(1),
+    .juego-garabato:nth-child(7),
+    .juego-garabato:nth-child(6),
+    .juego-garabato:nth-child(12) {
+        display: block;
+        --g-tam: 48px;
+    }
+
+    .juego-garabato:nth-child(1)  { top: 96px; left: 3%; }
+    .juego-garabato:nth-child(7)  { top: 96px; right: 3%; }
+    .juego-garabato:nth-child(6)  { bottom: 8px; left: 4%; }
+    .juego-garabato:nth-child(12) { bottom: 8px; right: 4%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .juego-garabatos.is-pop .juego-garabato { animation: none; }
+}

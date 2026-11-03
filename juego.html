@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Juego de decisiones sobre crianza positiva de PARENTYX">
+    <title>Juego de decisiones | PARENTYX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/juego.css">
+</head>
+<body class="juego-page">
+    <header class="juego-header">
+        <a href="index.html" aria-label="Volver al inicio">
+            <img class="brand-logo" src="images/promis.png" alt="PARENTYX - Ruta de crianza saludable">
+        </a>
+        <a class="juego-volver" href="index.html">Volver al inicio</a>
+    </header>
+
+    <!-- Garabatos decorativos: el SVG se inserta en línea desde images/garabatos/ -->
+    <div class="juego-garabatos" aria-hidden="true">
+        <span class="juego-garabato" data-garabato="sol"></span>
+        <span class="juego-garabato" data-garabato="nube"></span>
+        <span class="juego-garabato" data-garabato="corazon"></span>
+        <span class="juego-garabato" data-garabato="pelota"></span>
+        <span class="juego-garabato" data-garabato="arbol"></span>
+        <span class="juego-garabato" data-garabato="carrito"></span>
+        <span class="juego-garabato" data-garabato="estrella"></span>
+        <span class="juego-garabato" data-garabato="cometa"></span>
+        <span class="juego-garabato" data-garabato="globo"></span>
+        <span class="juego-garabato" data-garabato="muneca"></span>
+        <span class="juego-garabato" data-garabato="casa"></span>
+        <span class="juego-garabato" data-garabato="flor"></span>
+    </div>
+
+    <div class="juego-rastro" aria-hidden="true">
+        <p class="juego-rastro-titulo"></p>
+        <div class="juego-rastro-camino"></div>
+    </div>
+
+    <main class="juego-main">
+        <div class="juego-escenario" aria-live="polite"></div>
+    </main>
+
+    <script src="js/juego-datos.js"></script>
+    <script src="js/juego.js"></script>
+</body>
+</html>
