@@ -483,3 +483,38 @@ body.juego-page[data-garabatos="derecha"] { --color-garabatos: var(--juego-turqu
 @media (prefers-reduced-motion: reduce) {
     .juego-garabatos.is-pop .juego-garabato { animation: none; }
 }
+
+/* Botón "Volver al inicio" con el estilo de botones del sitio */
+.juego-volver {
+    padding: 10px 22px;
+    border: 1px solid var(--btn-outline-border);
+    border-radius: var(--btn-radius);
+    transition:
+        transform var(--btn-duration) var(--btn-ease),
+        background var(--btn-duration) var(--btn-ease),
+        border-color var(--btn-duration) var(--btn-ease),
+        color var(--btn-duration) var(--btn-ease);
+}
+
+.juego-volver:hover,
+.juego-volver:focus-visible {
+    text-decoration: none;
+    background: var(--btn-outline-bg-hover);
+    border-color: var(--btn-soft-border);
+    color: var(--blue-light);
+    transform: var(--btn-lift);
+}
+
+.juego-volver:focus-visible {
+    outline: none;
+    box-shadow: var(--btn-focus-ring);
+}
+
+.juego-volver:active {
+    transform: scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .juego-volver { transition: none; }
+    .juego-volver:hover { transform: none; }
+}

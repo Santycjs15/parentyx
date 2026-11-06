@@ -1617,3 +1617,745 @@ a {
         display: none;
     }
 }
+
+/* =========================
+   REDISEÑO - PARTE 1: FONDO
+   Lienzo oscuro con luces difusas, superficies de vidrio y sombras suaves.
+   Todo usa la paleta existente; ajusta los valores desde estas variables.
+   ========================= */
+
+:root {
+    /* Luces difusas del fondo (tonos de --blue-primary y --blue-light) */
+    --glow-one: rgba(91, 141, 239, 0.16);
+    --glow-two: rgba(116, 179, 255, 0.12);
+    --glow-three: rgba(121, 164, 255, 0.09);
+
+    /* Superficies de vidrio (base #132A4A = --text-dark) */
+    --surface-glass: rgba(19, 42, 74, 0.62);
+    --surface-glass-strong: rgba(19, 42, 74, 0.82);
+    --surface-band: rgba(19, 42, 74, 0.5);
+    --section-divider: rgba(116, 179, 255, 0.1);
+    --glass-blur: 18px;
+    --border-glass: rgba(255, 255, 255, 0.08);
+
+    /* Sombras difusas teñidas de azul */
+    --shadow-soft: 0 14px 34px -10px rgba(5, 15, 30, 0.55), 0 4px 14px rgba(91, 141, 239, 0.06);
+    --shadow-deep: 0 26px 56px -14px rgba(5, 15, 30, 0.7), 0 8px 24px -6px rgba(91, 141, 239, 0.1);
+
+    /* Línea de acento superior */
+    --ribbon: linear-gradient(90deg, transparent 0%, var(--blue-primary) 25%, var(--blue-light) 60%, transparent 100%);
+
+    /* Radios */
+    --radius-sm: 12px;
+    --radius-md: 18px;
+    --radius-lg: 26px;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 8% 12%, var(--glow-one) 0%, transparent 38%),
+        radial-gradient(circle at 92% 42%, var(--glow-two) 0%, transparent 40%),
+        radial-gradient(circle at 45% 88%, var(--glow-three) 0%, transparent 45%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Las secciones dejan ver las luces del fondo. */
+.hero,
+.content-section {
+    background: transparent;
+}
+
+/* Estas clases van en el <body>: conservan el fondo oscuro de la paleta. */
+.survey-page,
+.private-page {
+    background: var(--blue-dark);
+}
+
+.content-section:nth-of-type(even) {
+    background: var(--surface-band);
+}
+
+/* Superficies tipo vidrio */
+.registration-section,
+.profile-survey-prompt,
+.profile-survey-form > fieldset,
+.about-column,
+.library-card,
+.module-content,
+.access-message,
+.monthly-survey-card,
+.premium-option,
+.empty-library {
+    background: var(--surface-glass);
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--border-glass);
+    box-shadow: var(--shadow-soft);
+}
+
+.registration-section {
+    background: var(--surface-glass-strong);
+    box-shadow: var(--shadow-deep);
+}
+
+/* Acento superior en las tarjetas destacadas */
+.library-card,
+.monthly-survey-card,
+.premium-option,
+.empty-library,
+.access-message,
+.about-column {
+    position: relative;
+    overflow: hidden;
+}
+
+.library-card::after,
+.monthly-survey-card::after,
+.premium-option::after,
+.empty-library::after,
+.access-message::after,
+.about-column::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--ribbon);
+    pointer-events: none;
+}
+
+.video-wrapper {
+    border: 1px solid var(--border-glass);
+    box-shadow: var(--shadow-deep);
+}
+
+@media (max-width: 600px) {
+    :root {
+        --glass-blur: 10px;
+    }
+
+    body::before {
+        background-image:
+            radial-gradient(circle at 10% 6%, var(--glow-one) 0%, transparent 55%),
+            radial-gradient(circle at 90% 50%, var(--glow-two) 0%, transparent 55%),
+            radial-gradient(circle at 40% 95%, var(--glow-three) 0%, transparent 60%);
+    }
+}
+
+/* El juego mantiene su propio fondo. */
+body.juego-page::before {
+    content: none;
+}
+
+/* Separación entre secciones un poco más marcada */
+.content-section:nth-of-type(even) {
+    border-top: 1px solid var(--section-divider);
+    border-bottom: 1px solid var(--section-divider);
+}
+
+/* =========================
+   REDISEÑO - PARTE 2: BOTONES
+   Píldoras con degradado, sombras de color y respuesta suave al pasar el mouse.
+   ========================= */
+
+:root {
+    --btn-radius: 999px;
+    --btn-padding: 13px 26px;
+    --btn-gap: 10px;
+    --btn-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --btn-duration: 0.3s;
+    --btn-lift: translateY(-2px);
+
+    --btn-primary-bg: linear-gradient(135deg, #2F6AD9 0%, var(--blue-primary) 50%, var(--blue-light) 100%);
+    --btn-primary-bg-hover: linear-gradient(135deg, #2458C4 0%, #4F82E6 100%);
+    --btn-primary-shadow: 0 8px 24px -6px rgba(91, 141, 239, 0.55);
+    --btn-primary-shadow-hover: 0 12px 28px -6px rgba(91, 141, 239, 0.7);
+
+    --btn-outline-border: rgba(255, 255, 255, 0.22);
+    --btn-outline-bg-hover: rgba(116, 179, 255, 0.12);
+    --btn-soft-bg: rgba(91, 141, 239, 0.14);
+    --btn-soft-border: rgba(116, 179, 255, 0.32);
+    --btn-focus-ring: 0 0 0 3px rgba(116, 179, 255, 0.55);
+}
+
+.btn {
+    gap: var(--btn-gap);
+    padding: var(--btn-padding);
+    border-radius: var(--btn-radius);
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-align: center;
+    transition:
+        transform var(--btn-duration) var(--btn-ease),
+        box-shadow var(--btn-duration) var(--btn-ease),
+        background var(--btn-duration) var(--btn-ease),
+        border-color var(--btn-duration) var(--btn-ease),
+        color var(--btn-duration) var(--btn-ease);
+}
+
+.btn:hover {
+    transform: var(--btn-lift);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn:focus-visible {
+    outline: none;
+    box-shadow: var(--btn-focus-ring);
+}
+
+/* Primario: degradado azul con sombra de color */
+.btn-primary {
+    background: var(--btn-primary-bg);
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: var(--btn-primary-shadow);
+}
+
+.btn-primary:hover {
+    background: var(--btn-primary-bg-hover);
+    box-shadow: var(--btn-primary-shadow-hover);
+}
+
+/* Secundario: vidrio con contorno */
+.btn-secondary {
+    background: rgba(19, 42, 74, 0.55);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    color: var(--blue-light);
+    border-color: var(--btn-soft-border);
+}
+
+.btn-secondary:hover {
+    background: var(--btn-soft-bg);
+    border-color: var(--blue-light);
+    box-shadow: 0 6px 18px rgba(91, 141, 239, 0.2);
+}
+
+/* Header: "Inicia sesión" con contorno y "Regístrate" destacado */
+.header-actions .btn {
+    padding: 12px 22px;
+}
+
+.btn-login {
+    background: transparent;
+    color: var(--white);
+    border-color: var(--btn-outline-border);
+}
+
+.btn-login:hover {
+    background: var(--btn-outline-bg-hover);
+    border-color: var(--btn-soft-border);
+    color: var(--blue-light);
+}
+
+.btn-register {
+    background: var(--btn-primary-bg);
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: var(--btn-primary-shadow);
+}
+
+.btn-register:hover {
+    background: var(--btn-primary-bg-hover);
+    box-shadow: var(--btn-primary-shadow-hover);
+}
+
+/* Píldoras del menú */
+.main-nav .premium-link,
+.nav-dropdown-toggle {
+    padding: 9px 18px;
+    border-radius: var(--btn-radius);
+    transition:
+        background var(--btn-duration) var(--btn-ease),
+        border-color var(--btn-duration) var(--btn-ease),
+        box-shadow var(--btn-duration) var(--btn-ease),
+        color var(--btn-duration) var(--btn-ease);
+}
+
+.main-nav .premium-link {
+    background: var(--btn-soft-bg);
+    color: var(--blue-light);
+    border: 1px solid var(--btn-soft-border);
+    box-shadow: 0 2px 10px rgba(91, 141, 239, 0.12);
+}
+
+.main-nav .premium-link:hover {
+    background: var(--btn-primary-bg);
+    color: var(--white);
+    border-color: transparent;
+    box-shadow: 0 4px 16px rgba(91, 141, 239, 0.35);
+}
+
+.nav-dropdown-toggle {
+    border: 1px solid var(--btn-outline-border);
+}
+
+.nav-dropdown-toggle:hover,
+.nav-dropdown.is-open .nav-dropdown-toggle {
+    border-color: var(--btn-soft-border);
+    background: var(--btn-outline-bg-hover);
+}
+
+.main-nav .premium-link:focus-visible,
+.nav-dropdown-toggle:focus-visible {
+    outline: none;
+    box-shadow: var(--btn-focus-ring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn,
+    .main-nav .premium-link,
+    .nav-dropdown-toggle {
+        transition: none;
+    }
+
+    .btn:hover,
+    .btn:active {
+        transform: none;
+    }
+}
+
+@media (max-width: 600px) {
+    :root {
+        --btn-padding: 12px 22px;
+    }
+
+    .header-actions .btn {
+        padding: 10px 16px;
+    }
+
+    .main-nav .premium-link,
+    .nav-dropdown-toggle {
+        padding: 8px 14px;
+    }
+}
+
+/* =========================
+   REDISEÑO - PARTE 3: LIMPIEZA Y JERARQUÍA
+   Más aire entre bloques, títulos más firmes y textos más fáciles de leer.
+   ========================= */
+
+:root {
+    --section-space: clamp(72px, 9vw, 120px);
+    --heading-tracking: -0.02em;
+    --text-measure: 62ch;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Espaciado vertical uniforme entre secciones */
+.content-section {
+    padding-top: var(--section-space);
+    padding-bottom: var(--section-space);
+}
+
+/* Títulos: más peso visual y letras un poco más juntas */
+.hero-copy h1,
+.section-heading h2,
+.registration-card h2,
+.about-column h3 {
+    font-weight: 700;
+    letter-spacing: var(--heading-tracking);
+    line-height: 1.15;
+}
+
+.section-heading {
+    margin-bottom: 8px;
+}
+
+.section-heading h2 {
+    margin-bottom: 16px;
+}
+
+/* Párrafos con un ancho de línea cómodo */
+.hero-copy p,
+.section-heading p,
+.about-column p,
+.registration-card p {
+    max-width: var(--text-measure);
+}
+
+.section-heading p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Etiquetas pequeñas sobre los títulos */
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+
+@media (max-width: 600px) {
+    :root {
+        --section-space: 64px;
+    }
+}
+
+/* =========================
+   REDISEÑO - BOTONES SIN CLASE .btn
+   Cuenta, cerrar sesión, enlaces de regreso y lista de módulos.
+   ========================= */
+
+.account-toggle {
+    border: 1px solid var(--btn-soft-border);
+    background: var(--btn-soft-bg);
+    color: var(--blue-light);
+    box-shadow: 0 2px 10px rgba(91, 141, 239, 0.12);
+    transition:
+        transform var(--btn-duration) var(--btn-ease),
+        background var(--btn-duration) var(--btn-ease),
+        box-shadow var(--btn-duration) var(--btn-ease),
+        color var(--btn-duration) var(--btn-ease);
+}
+
+.account-toggle:hover,
+.account-toggle[aria-expanded="true"] {
+    background: var(--btn-primary-bg);
+    color: var(--white);
+    box-shadow: 0 6px 18px rgba(91, 141, 239, 0.4);
+    transform: var(--btn-lift);
+}
+
+.account-panel {
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(19, 42, 74, 0.08);
+    box-shadow: var(--shadow-deep);
+}
+
+.account-logout {
+    padding: 11px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--btn-radius);
+    background: var(--btn-primary-bg);
+    box-shadow: var(--btn-primary-shadow);
+    transition:
+        transform var(--btn-duration) var(--btn-ease),
+        background var(--btn-duration) var(--btn-ease),
+        box-shadow var(--btn-duration) var(--btn-ease);
+}
+
+.account-logout:hover {
+    background: var(--btn-primary-bg-hover);
+    box-shadow: var(--btn-primary-shadow-hover);
+    transform: var(--btn-lift);
+}
+
+/* Enlaces "Volver al inicio": píldora de contorno discreta */
+.auth-back-link {
+    display: block;
+    width: fit-content;
+    margin: 18px auto 0;
+    padding: 10px 22px;
+    border: 1px solid var(--btn-soft-border);
+    border-radius: var(--btn-radius);
+    transition:
+        transform var(--btn-duration) var(--btn-ease),
+        background var(--btn-duration) var(--btn-ease),
+        border-color var(--btn-duration) var(--btn-ease);
+}
+
+.auth-back-link:hover {
+    background: var(--btn-outline-bg-hover);
+    border-color: var(--blue-primary);
+    transform: var(--btn-lift);
+}
+
+/* Lista de módulos */
+.module-button {
+    border-radius: var(--radius-sm);
+    transition:
+        background var(--btn-duration) var(--btn-ease),
+        color var(--btn-duration) var(--btn-ease),
+        border-color var(--btn-duration) var(--btn-ease);
+}
+
+.account-toggle:focus-visible,
+.account-logout:focus-visible,
+.auth-back-link:focus-visible,
+.module-button:focus-visible {
+    outline: none;
+    box-shadow: var(--btn-focus-ring);
+}
+
+.account-toggle:active,
+.account-logout:active,
+.auth-back-link:active {
+    transform: scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .account-toggle,
+    .account-logout,
+    .auth-back-link,
+    .module-button {
+        transition: none;
+    }
+
+    .account-toggle:hover,
+    .account-logout:hover,
+    .auth-back-link:hover {
+        transform: none;
+    }
+}
+
+
+/* =========================
+   SECCIÓN DE VIDEOS: tarjetas en columnas de 2
+   Para agregar videos, añade otro .video-item dentro de .video-grid.
+   ========================= */
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(20px, 3vw, 44px);
+    width: min(100%, 1200px);
+}
+
+.video-grid .video-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: clamp(22px, 2.4vw, 34px);
+    background: var(--white);
+    border-radius: 32px;
+    box-shadow: var(--shadow-deep);
+}
+
+.video-grid .video-item h3 {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    color: var(--text-dark);
+    font-size: clamp(1.05rem, 1.5vw, 1.45rem);
+    font-weight: 600;
+    line-height: 1.35;
+    text-align: center;
+}
+
+.video-grid .video-wrapper {
+    flex: 0 0 auto;
+    border: 0;
+    border-radius: var(--radius-md);
+    box-shadow: none;
+}
+
+@media (max-width: 800px) {
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .video-grid .video-item {
+        border-radius: var(--radius-lg);
+    }
+}
+
+/* Más espacio entre el título de la sección de videos y las tarjetas */
+.video-section .section-heading {
+    margin-bottom: clamp(20px, 3vw, 36px);
+}
+
+/* =========================
+   VALORES CORPORATIVOS: tarjetas con ícono
+   ========================= */
+
+.values-grid,
+.values-grid-bottom {
+    gap: clamp(20px, 2.5vw, 32px);
+}
+
+.values-grid-bottom {
+    margin-top: clamp(20px, 2.5vw, 32px);
+}
+
+.values-grid-bottom .value-card {
+    width: calc((100% - 2 * clamp(20px, 2.5vw, 32px)) / 3);
+}
+
+.value-card {
+    padding: clamp(24px, 2.6vw, 36px);
+    text-align: left;
+    background: var(--white);
+    border: 1px solid transparent;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    transition:
+        transform var(--btn-duration) var(--btn-ease),
+        box-shadow var(--btn-duration) var(--btn-ease),
+        border-color var(--btn-duration) var(--btn-ease);
+}
+
+.value-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(91, 141, 239, 0.35);
+    box-shadow: var(--shadow-deep);
+}
+
+.value-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    color: var(--blue-primary);
+    font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+    font-weight: 700;
+}
+
+.value-icon {
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+}
+
+.value-card p {
+    color: var(--text-dark);
+    line-height: 1.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .value-card { transition: none; }
+    .value-card:hover { transform: none; }
+}
+
+@media (max-width: 950px) {
+    .values-grid-bottom .value-card {
+        width: auto;
+    }
+}
+
+/* =========================
+   MISIÓN Y VISIÓN: tarjetas blancas como los valores
+   ========================= */
+
+.about-column {
+    background: var(--white);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border: 1px solid transparent;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    transition:
+        transform var(--btn-duration) var(--btn-ease),
+        box-shadow var(--btn-duration) var(--btn-ease),
+        border-color var(--btn-duration) var(--btn-ease);
+}
+
+.about-column:hover {
+    transform: translateY(-4px);
+    border-color: rgba(91, 141, 239, 0.35);
+    box-shadow: var(--shadow-deep);
+}
+
+.about-column::after {
+    content: none;
+}
+
+.about-column h3 {
+    color: var(--blue-primary);
+}
+
+.about-column p {
+    color: var(--text-dark);
+}
+
+.about-column img.section-image {
+    border-radius: var(--radius-md);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-column { transition: none; }
+    .about-column:hover { transform: none; }
+}
+
+/* =========================
+   PÁGINA DE PRODUCTOS
+   ========================= */
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(20px, 3vw, 40px);
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: clamp(22px, 2.6vw, 34px);
+    background: var(--white);
+    border: 1px solid transparent;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    transition:
+        transform var(--btn-duration) var(--btn-ease),
+        box-shadow var(--btn-duration) var(--btn-ease),
+        border-color var(--btn-duration) var(--btn-ease);
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(91, 141, 239, 0.35);
+    box-shadow: var(--shadow-deep);
+}
+
+/* Reemplaza el placeholder por <img class="product-image" src="..." alt="..."> */
+.product-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    margin-bottom: 8px;
+    border-radius: var(--radius-md);
+    object-fit: cover;
+}
+
+.product-card h2 {
+    color: var(--blue-primary);
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    font-weight: 700;
+    letter-spacing: var(--heading-tracking);
+    line-height: 1.2;
+}
+
+.product-card p {
+    color: var(--text-dark);
+    line-height: 1.7;
+}
+
+@media (max-width: 800px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .product-card { transition: none; }
+    .product-card:hover { transform: none; }
+}
+
+/* Imagen de "Quienes somos" debajo del título */
+.about-image {
+    display: block;
+    width: min(100%, 1100px);
+    max-height: 520px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-deep);
+}

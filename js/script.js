@@ -11,8 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const accountPanel = document.querySelector(".account-panel");
     const accountEmail = document.querySelector(".account-email");
     const accountLogout = document.querySelector(".account-logout");
-    const productsDropdown = document.querySelector(".nav-dropdown");
-    const productsToggle = document.querySelector(".nav-dropdown-toggle");
     const premiumLink = document.querySelector(".premium-link");
     const monthlySurveyHome = document.querySelector(".monthly-survey-home");
     const currentMonth = new Date().toISOString().slice(0, 7);
@@ -64,17 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
         await signOut(auth);
         closeAccountPanel();
     });
-
-    productsToggle.addEventListener("click", () => {
-        const isOpen = productsToggle.getAttribute("aria-expanded") === "true";
-        productsToggle.setAttribute("aria-expanded", String(!isOpen));
-        productsDropdown.classList.toggle("is-open", !isOpen);
-    });
-
-    productsDropdown.querySelectorAll(".nav-dropdown-menu a").forEach((link) => {
-        link.addEventListener("click", closeProductsDropdown);
-    });
-
 });
 
 function closeAccountPanel() {
@@ -85,12 +72,5 @@ function closeAccountPanel() {
     accountPanel.hidden = true;
 }
 
-function closeProductsDropdown() {
-    const productsDropdown = document.querySelector(".nav-dropdown");
-    const productsToggle = document.querySelector(".nav-dropdown-toggle");
-
-    productsDropdown.classList.remove("is-open");
-    productsToggle.setAttribute("aria-expanded", "false");
-}
 
 
