@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" font-family="Poppins, 'Segoe UI', Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fdf6ec"/>
+      <stop offset="0.5" stop-color="#f7f9fc"/>
+      <stop offset="1" stop-color="#eaf2fb"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0.15" cy="0.2" r="0.45">
+      <stop offset="0" stop-color="#fbe3c4" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#fbe3c4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.88" cy="0.75" r="0.45">
+      <stop offset="0" stop-color="#cfe2f6" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#cfe2f6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="txt" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1565c0"/>
+      <stop offset="0.5" stop-color="#4f9a7a"/>
+      <stop offset="1" stop-color="#d4a94a"/>
+    </linearGradient>
+    <linearGradient id="btn" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e5fae"/>
+      <stop offset="1" stop-color="#0d3c7a"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-50%" width="140%" height="200%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0d3c7a" flood-opacity="0.22"/>
+    </filter>
+    <filter id="soft" x="-20%" y="-50%" width="140%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#1e3a5f" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+  <circle cx="1060" cy="140" r="90" fill="none" stroke="#dbe7f5" stroke-width="2" opacity="0.7"/>
+  <circle cx="1060" cy="140" r="55" fill="none" stroke="#dbe7f5" stroke-width="2" opacity="0.5"/>
+
+  <!-- Badge -->
+  <g filter="url(#soft)">
+    <rect x="440" y="150" width="320" height="48" rx="24" fill="#fffaf0" stroke="#f0d9a8" stroke-width="1.5"/>
+  </g>
+  <text x="600" y="181" text-anchor="middle" font-size="18" font-weight="600" fill="#1e5fae">Catálogo oficial</text>
+
+  <!-- Title -->
+  <text x="600" y="300" text-anchor="middle" font-size="84" font-weight="800" fill="#0f1b33">Productos</text>
+  <text x="600" y="395" text-anchor="middle" font-size="92" font-weight="800" fill="url(#txt)">Parentyx</text>
+  <rect x="420" y="415" width="360" height="6" rx="3" fill="url(#txt)" opacity="0.35"/>
+
+  <!-- Buttons -->
+  <g filter="url(#shadow)">
+    <rect x="370" y="470" width="250" height="62" rx="31" fill="url(#btn)"/>
+  </g>
+  <text x="495" y="508" text-anchor="middle" font-size="21" font-weight="600" fill="#ffffff">Ver productos</text>
+  <g filter="url(#soft)">
+    <rect x="640" y="470" width="190" height="62" rx="31" fill="#ffffff" stroke="#dbe3ee" stroke-width="1.5"/>
+  </g>
+  <text x="735" y="508" text-anchor="middle" font-size="21" font-weight="600" fill="#1e5fae">Conocer más</text>
+</svg>

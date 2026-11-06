@@ -1,0 +1,15 @@
+{
+  "hosting": {
+    "site": "parentyx-app",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "documentation/**",
+      "state/**",
+      "README.md",
+      "firestore.rules"
+    ]
+  }
+}
