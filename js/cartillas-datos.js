@@ -11,7 +11,7 @@ const CARTILLAS = [
         indice: "Índice de Regulación y Afecto (IRA)",
         descripcion: "Estrategias para comprender, acompañar y regular las emociones en la infancia.",
         temas: ["Regulación emocional", "Expresión afectiva", "Manejo de estrés y ansiedad"],
-        imagen: "images/Cartilla 1.png",
+        imagen: "images/cartilla-1.jpg",
         color: "#1F3F7A"
     },
     {
@@ -20,7 +20,7 @@ const CARTILLAS = [
         indice: "Índice de Coherencia Parental (ICP)",
         descripcion: "Claves para una crianza coherente, consistente y con límites saludables.",
         temas: ["Disciplina", "Establecimiento de límites sanos", "Consistencia"],
-        imagen: "images/Cartilla 2.png",
+        imagen: "images/cartilla-2.jpg",
         color: "#6B1F4F"
     },
     {
@@ -29,7 +29,7 @@ const CARTILLAS = [
         indice: "Índice de Vínculo y Sensibilidad (IVS)",
         descripcion: "Fortaleciendo el vínculo afectivo y la sensibilidad en la relación padre, madre, cuidador/a y niño.",
         temas: ["Apego", "Respuesta a necesidades del niño", "Empatía parental"],
-        imagen: "images/Cartilla 3.png",
+        imagen: "images/cartilla-3.jpg",
         color: "#0F4F4A"
     },
     {
@@ -38,7 +38,7 @@ const CARTILLAS = [
         indice: "Índice de Entorno y Estimulación (IEE)",
         descripcion: "Creando entornos que potencian el desarrollo, el aprendizaje y el bienestar infantil.",
         temas: ["Dinámica familiar", "Estimulación cognitiva y emocional"],
-        imagen: "images/Cartilla 4.png",
+        imagen: "images/cartilla-4.jpg",
         color: "#A8650F"
     }
 ];
