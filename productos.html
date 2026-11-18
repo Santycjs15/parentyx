@@ -24,20 +24,35 @@
         </header>
 
         <main class="private-content">
-            <div class="products-grid">
-                <article class="product-card">
-                    <img class="product-image" src="images/Baterias.jpg" alt="Baterías de evaluación PARENTYX">
-                    <h2>Baterías</h2>
-                    <p>Batería de evaluación del funcionamiento parental y de cuidadores para la identificación de los estilos de crianza.</p>
-                </article>
+            <section class="products-group" aria-labelledby="baterias-titulo">
+                <div class="products-group-heading">
+                    <h2 id="baterias-titulo">Baterías</h2>
+                </div>
 
-                <article class="product-card">
-                    <img class="product-image" src="images/Cartilla.png" alt="Cartillas psicoeducativas PARENTYX">
-                    <h2>Cartillas psicoeducativas</h2>
-                    <p>Herramientas prácticas y reflexivas para el fortalecimiento de prácticas de crianza saludable.</p>
+                <article class="product-row product-row-feature">
+                    <div class="product-row-media">
+                        <img class="product-row-image" src="images/Baterias.jpg" alt="Baterías de evaluación PARENTYX">
+                    </div>
+                    <div class="product-row-body">
+                        <h3>Batería de evaluación PARENTYX</h3>
+                        <p>Batería de evaluación del funcionamiento parental y de cuidadores para la identificación de los estilos de crianza.</p>
+                    </div>
                 </article>
-            </div>
+            </section>
+
+            <section class="products-group" aria-labelledby="cartillas-titulo">
+                <div class="products-group-heading">
+                    <h2 id="cartillas-titulo">Cartillas psicoeducativas</h2>
+                    <p>Herramientas prácticas y reflexivas para el fortalecimiento de prácticas de crianza saludable.</p>
+                </div>
+
+                <!-- Las cartillas se generan desde js/cartillas-datos.js -->
+                <div class="cartillas-lista" data-cartillas-lista></div>
+            </section>
         </main>
     </div>
+
+    <script src="js/cartillas-datos.js"></script>
+    <script src="js/cartillas.js"></script>
 </body>
 </html>
